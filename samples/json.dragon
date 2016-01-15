@@ -1,0 +1,8 @@
+json = {
+  lang: 'dragon',
+  year: 2016,
+  keyword: [ 'fun', 'versatile' ]
+}
+
+print(json)
+

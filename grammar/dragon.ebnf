@@ -1,0 +1,139 @@
+directives:
+  autoalias
+
+imports:
+ fr.umlv.dragon.rt.Array
+ fr.umlv.dragon.rt.Literal
+ fr.umlv.dragon.ast.Expr
+ fr.umlv.dragon.rt.Parameter
+  
+priorities:
+  parens = 7 left
+  dot = 6 left
+  mult = 5 left
+  plus = 4 left
+  test = 3 left
+  access = 2 left
+  lambda = 1 right
+  id = 0 left
+
+tokens:
+  assign = '='                 
+  dot = '\.'                [dot]
+  semicolon = ';'
+  antislash = '\\'          [lambda]
+  arrow = '->'
+  eol = '\n'
+  lpar = '\('               [parens]           
+  rpar = '\)'
+  lopt = '\['
+  ropt = '\]'
+  lcurl = '\{'
+  rcurl = '\}'
+  add = '\+'                [plus]
+  sub = '-'                 [plus]
+  mul = '\*'                [mult]
+  div = '\/'                [mult]
+  rem = '%'                 [mult]
+  eq = '=='                 [test]
+  ne = '!='                 [test]
+  lt = '<'                  [test]
+  le = '<='                 [test]
+  gt = '>'                  [test]
+  ge = '>='                 [test]
+  _if = 'if'
+  _while = 'while'
+  _return = 'return'
+  
+  
+  text = "'[^']*'|\u0022[^\u0022]*\u0022|[^ \t\r\n=.:,();]+:"
+  integer = "[0-9]+"
+  id = "[^ \t\r\n\\=.:,();]+"   [id]
+ 
+blanks:
+ space = "( |\t|\r|\n|,)"
+ 
+types:
+ 'id': Literal
+ 'integer': Literal
+ 'text': Literal
+ name: Literal
+ block: Array<Expr>
+ instr: Expr
+ args: Array<Expr>
+ param: Parameter
+ params: Array<Parameter>
+ expr: Expr
+ 
+
+starts:
+ script
+
+productions:
+ script = block  { script }
+        ; 
+       
+ block = block instr { block_rec }
+       |             { block_empty }
+       ;       
+       
+ eoi = ';'  { eoi_semi }
+     |      { eoi_empty }
+     ;       
+       
+ instr = expr eoi                                         { instr_expr }
+       | 'id' '=' expr eoi                                { instr_assign }
+       | 'id' '=' 'antislash' params '->' 'eol' block ')' { instr_assign_lambda }
+       | 'while' '(' expr block ')'                       { instr_while }
+       | 'return' expr eoi                                { instr_return }
+       ;
+       
+ args = args expr  { args_rec }
+      |            { args_empty }
+      ;
+      
+ param = 'id' '*'    { param_id_varargs }
+       | 'id'        { param_id }
+       ;     
+      
+ params = params param { params_rec }
+        |              { params_empty }
+        ;     
+       
+ name = 'id'    { name_id }
+      | 'text'  { name_text }
+      ;      
+       
+ expr = 'integer'                                      { expr_numeric }
+      | name                                     [id]  { expr_name }
+      
+      | '(' block')'                                   { expr_parens }
+      | '[' args ']'                                   { expr_array }
+      | '{' args '}'                                   { expr_dict }
+      
+      | 'if' '(' expr expr expr ')'                    { expr_if }
+      | 'if' '(' expr expr ')'                         { expr_if_unbalanced }
+      
+      | 'antislash' params '->' expr         [lambda]  { expr_lambda_expr }
+      
+      | name '(' args ')'                                     [parens] { expr_funcall }
+      | name '(' args 'antislash' params '->' 'eol' block ')' [parens] { expr_funcall_lambda }
+      
+      | expr '.' name '(' args ')'                                       { expr_mthcall }
+      | expr '.' name '(' args 'antislash' params '->' 'eol' block ')'   { expr_mthcall_lambda }
+      
+      | expr '.' name                        [dot]     { expr_access }
+      
+      | expr '*' expr                        [mult]    { expr_mul }
+      | expr '/' expr                        [mult]    { expr_div }
+      | expr 'rem' expr                      [mult]    { expr_rem }
+      | expr '+' expr                        [plus]    { expr_add }
+      | expr '-' expr                        [plus]    { expr_sub }
+      | expr '==' expr                       [test]    { expr_eq }
+      | expr '!=' expr                       [test]    { expr_ne }
+      | expr '<' expr                        [test]    { expr_lt }
+      | expr '<=' expr                       [test]    { expr_le }
+      | expr '>' expr                        [test]    { expr_gt }
+      | expr '>=' expr                       [test]    { expr_ge }
+      ;
+  

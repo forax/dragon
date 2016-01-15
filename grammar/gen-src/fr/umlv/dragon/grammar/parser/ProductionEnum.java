@@ -1,0 +1,50 @@
+package fr.umlv.dragon.grammar.parser;
+
+/** 
+ *  This class is generated - please do not edit it 
+ */
+public enum ProductionEnum {
+  script,
+block_rec,
+block_empty,
+eoi_semi,
+eoi_empty,
+instr_expr,
+instr_assign,
+instr_assign_lambda,
+instr_while,
+instr_return,
+args_rec,
+args_empty,
+param_id_varargs,
+param_id,
+params_rec,
+params_empty,
+name_id,
+name_text,
+expr_numeric,
+expr_name,
+expr_parens,
+expr_array,
+expr_dict,
+expr_if,
+expr_if_unbalanced,
+expr_lambda_expr,
+expr_funcall,
+expr_funcall_lambda,
+expr_mthcall,
+expr_mthcall_lambda,
+expr_access,
+expr_mul,
+expr_div,
+expr_rem,
+expr_add,
+expr_sub,
+expr_eq,
+expr_ne,
+expr_lt,
+expr_le,
+expr_gt,
+expr_ge
+;
+}

@@ -1,0 +1,9 @@
+print(2.str())
+print(2.hash())
+print(2 == 2)
+print(2 != 2)
+
+print('hello'.str())
+print('hello'.hash())
+print('hello' == 'hello')
+print('hello' != 'hello')

@@ -1,0 +1,9 @@
+def(doc: \function ->
+  "return the documentation of a function"
+  print(function.body.exprs.get(0).value)
+)
+
+doc(doc)
+
+
+

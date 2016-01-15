@@ -1,0 +1,16 @@
+def(addOne: \x -> x + 1)
+
+def(printNums: \x ->
+  i = 0
+  while(i < x
+    print(i)
+    i = addOne(i)
+  )
+)
+
+printNums(10)
+
+def(foo: \toto ->
+  toto + 3
+  this.+(toto, 3)
+)

@@ -1,0 +1,67 @@
+def(fib: \n -> 
+  "returns the fibonacci number of n"
+  if(n < 2
+     1
+     fib(n - 1) + fib(n - 2))
+)
+
+def(printAll: \n ->
+  "print values from 0 to n - 1"
+  n = 0
+  while(n < 10
+    print(n)
+    n = n + 1
+  )
+)
+
+def(const: \name, value ->
+  "define a constant globally accessible"
+  def(name, value)
+)
+
+const(MAX: 12)
+
+
+def(struct: \name, keys* ->
+  "define a structure"
+  vdict = Dict(name)
+  index = 0
+  key_length = length(keys)
+  while(slot < key_length
+    vdict.put(keys.get(index), index)
+    index = index + 1
+  )
+  vdict.put(to_str:, \this ->
+    'str'
+  )
+  
+  def(name, \vals* ->
+    object = _alloc_struct_(vdict, key_length)
+    i = 0
+    while(i < length(vals)
+      slot_index = vdict.get(vals.get(i))
+      _set_slot_(object, slot_index, vals.get(i + 1))
+      i = i + 2
+    )
+    return object
+  )
+)
+
+struct(Point: x: y:)
+
+def(main: \->
+  lambda1 = \x -> x
+  lambda2 = \-> print('lambda2')
+  
+  "special forms"
+  lambda3 = \x ->
+    x
+  )
+  print(\x ->
+    x
+  )
+  
+  
+  p = Point(x: 1, y: 2)
+  print(p.x + p.y)
+)
