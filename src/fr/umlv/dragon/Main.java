@@ -21,13 +21,16 @@ import fr.umlv.dragon.rt.Fun;
 import fr.umlv.dragon.rt.Parameter;
 
 public class Main {
+  @SuppressWarnings("unused")
   private static Object integer(Dict globals, Object receiver, Object[] args) {
     return Integer.parseInt((String)args[0]);
   }
+  @SuppressWarnings("unused")
   private static Object print(Dict globals, Object receiver, Object[] args) {
     System.out.println(Arrays.stream(args).map(String::valueOf).collect(Collectors.joining(" ")));
     return null;
   }
+  @SuppressWarnings("unused")
   private static Object def(Dict globals, Object receiver, Object[] args) {
     //System.out.println("def: " + Arrays.toString(args));
     
@@ -35,9 +38,11 @@ public class Main {
     globals.append(args[0].toString(), value);
     return value;
   }
+  @SuppressWarnings("unused")
   private static Object array(Dict globals, Object receiver, Object[] args) {
     return Array.of(args).freeze();  
   }
+  @SuppressWarnings("unused")
   private static Object dict(Dict globals, Object receiver, Object[] args) {
     return Dict.of(args).freeze();
   }
