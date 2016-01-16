@@ -78,17 +78,20 @@ public class Interpreter {
           
           Array<Parameter> parameters = new Array<>();
           Arrays.stream(m.getParameters()).map(p -> new Parameter(p.getName(), false)).forEach(parameters::append);
-          Fun fun = new Fun(parameters, (globals, receiver, args) -> {
-            try {
-              return mh.invoke(receiver, args);
-            } catch(Throwable e) {
-              if (e instanceof RuntimeException) {
-                throw (RuntimeException)e;
+          Fun fun = new Fun(parameters, new NativeCall() {  // it an inner class an not a lambda to workaround JDK-8130506
+            @Override
+            public Object call(Dict globals, Object receiver, Object... args) {
+              try {
+                return mh.invoke(receiver, args);
+              } catch(Throwable e) {
+                if (e instanceof RuntimeException) {
+                  throw (RuntimeException)e;
+                }
+                if (e instanceof Error) {
+                  throw (Error)e;
+                }
+                throw new RTError(e);
               }
-              if (e instanceof Error) {
-                throw (Error)e;
-              }
-              throw new RTError(e);
             }
           });
           
