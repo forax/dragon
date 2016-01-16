@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project name="dragon" default="all" basedir=".">
+	
+  <property name="lib.dir" location="lib"/>
+  <property name="dragon.jar" location="dragon.jar"/>
+	
+  <property name="src" location="src"/>
+  <property name="gen-src" location="grammar/gen-src"/>
+  <property name="classes" location="classes"/>
+  
+  <target name="all" depends="jar">
+  </target>
+	
+  <target name="jar" depends="compile">
+    <jar destfile="${dragon.jar}">
+    	<fileset dir="${classes}"/>
+    	<zipfileset includes="**/*.class" src="${lib.dir}/tatoo-runtime.jar"/>
+    	<manifest>
+    	  <attribute name="Main-Class" value="fr.umlv.dragon.Main"/>
+    	</manifest>
+    </jar>
+  </target>
+
+  <target name="compile">
+  	<mkdir dir="${classes}"/>
+	<javac srcdir="${src}:${gen-src}"
+         destdir="${classes}"
+         classpath="${lib.dir}/tatoo-runtime.jar"
+		 includeantruntime="false"
+         debug="on"
+	/>
+  </target>
+	
+  <target name="clean">
+	<delete dir="${classes}"/>
+  </target>
+</project>
