@@ -65,6 +65,8 @@ public class Main {
       
       //System.out.println("AST\n" + grammarEvaluator.getScript());
       
+      
+      @SuppressWarnings("unchecked")
       Dict globals = Dict.of(
           "int", new Fun(Parameter.of("text"), Main::integer),
           "print", new Fun(new Array<Parameter>().append(new Parameter("values", true)).freeze(), Main::print),
@@ -78,10 +80,10 @@ public class Main {
           "/",  new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> (Integer)a/(Integer)b)),
           "==", new Fun(Parameter.of("a", "b"), NativeCall.function(Objects::equals)),
           "!=", new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> !Objects.equals(a, b))),
-          "<",  new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable)a).compareTo(b) < 0)),
-          "<=", new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable)a).compareTo(b) <= 0)),
-          ">",  new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable)a).compareTo(b) > 0)),
-          ">=", new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable)a).compareTo(b) >= 0))
+          "<",  new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable<Object>)a).compareTo(b) < 0)),
+          "<=", new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable<Object>)a).compareTo(b) <= 0)),
+          ">",  new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable<Object>)a).compareTo(b) > 0)),
+          ">=", new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable<Object>)a).compareTo(b) >= 0))
           );
       
       Block script = grammarEvaluator.getScript();
