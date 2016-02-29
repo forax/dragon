@@ -1,5 +1,4 @@
 lambda = \x -> x
 
 print(lambda)
-print(lambda(3))
-
+assert(lambda(3) == 3)

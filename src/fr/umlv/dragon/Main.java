@@ -19,6 +19,7 @@ import fr.umlv.dragon.rt.Block;
 import fr.umlv.dragon.rt.Dict;
 import fr.umlv.dragon.rt.Fun;
 import fr.umlv.dragon.rt.Parameter;
+import fr.umlv.dragon.rt.RTError;
 
 public class Main {
   @SuppressWarnings("unused")
@@ -28,6 +29,13 @@ public class Main {
   @SuppressWarnings("unused")
   private static Object print(Dict globals, Object receiver, Object[] args) {
     System.out.println(Arrays.stream(args).map(String::valueOf).collect(Collectors.joining(" ")));
+    return null;
+  }
+  @SuppressWarnings("unused")
+  private static Object assert_(Dict globals, Object receiver, Object[] args) {
+    if (!(Boolean)args[0]) {
+      throw new RTError("assertion failed !");
+    }
     return null;
   }
   @SuppressWarnings("unused")
@@ -60,6 +68,7 @@ public class Main {
       Dict globals = Dict.of(
           "int", new Fun(Parameter.of("text"), Main::integer),
           "print", new Fun(new Array<Parameter>().append(new Parameter("values", true)).freeze(), Main::print),
+          "assert", new Fun(new Array<Parameter>().append(new Parameter("condition", false)).freeze(), Main::assert_),
           "def", new Fun(Parameter.of("name", "value"), Main::def),
           "array", new Fun(new Array<Parameter>().append(new Parameter("values", true)).freeze(), Main::array),
           "dict", new Fun(new Array<Parameter>().append(new Parameter("values", true)).freeze(), Main::dict),

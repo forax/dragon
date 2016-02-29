@@ -1,2 +1,6 @@
 def(foo: \-> 3)
-def(foo: \-> 4)
+assert(foo() == 3)
+
+"" uncomment 
+  def(foo: \-> 4)
+"

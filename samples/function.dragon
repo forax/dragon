@@ -10,7 +10,3 @@ def(printNums: \x ->
 
 printNums(10)
 
-def(foo: \toto ->
-  toto + 3
-  this.+(toto, 3)
-)

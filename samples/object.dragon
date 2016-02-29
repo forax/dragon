@@ -1,9 +1,6 @@
-print(2.str())
-print(2.hash())
-print(2 == 2)
-print(2 != 2)
+assert(2.str() == '2')
+assert(2.hash() == 2)
 
-print('hello'.str())
-print('hello'.hash())
-print('hello' == 'hello')
-print('hello' != 'hello')
+assert('hello'.str() == 'hello')
+assert('hello'.hash() == 99162322)
+
