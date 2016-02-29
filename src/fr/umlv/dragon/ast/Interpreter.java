@@ -102,7 +102,7 @@ public class Interpreter {
         });
       
       dict.append("==", new Fun(Parameter.of("other"), NativeCall.method(Object::equals)));
-      dict.append("!=", new Fun(Parameter.of("other"), NativeCall.method((a, b) -> a.equals(b))));
+      dict.append("!=", new Fun(Parameter.of("other"), NativeCall.method((a, b) -> !a.equals(b))));
       dict.append("hash", new Fun(Parameter.of(), NativeCall.method(Object::hashCode)));
       dict.append("str", new Fun(Parameter.of(), NativeCall.method(Object::toString)));
       
