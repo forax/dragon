@@ -1,0 +1,16 @@
+def(empty: \-> {})
+def(cons: \x next
+  { x: x, next: next }
+)
+
+def(size: \dict
+  if(dict == empty()
+    0
+    1 + size(dict.get(next:))
+  )
+)
+
+list = cons(1, cons(2, cons(3, empty())))
+assert(size(list) == 3)
+
+

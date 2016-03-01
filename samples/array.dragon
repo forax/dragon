@@ -1,0 +1,16 @@
+def(empty: \-> [])
+def(cons: \x next
+  [x, next]
+)
+
+def(size: \array
+  if(array.length() == 0
+    0
+    1 + size(array.get(1))
+  )
+)
+
+list = cons(1, cons(2, cons(3, empty())))
+assert(size(list) == 3)
+
+
