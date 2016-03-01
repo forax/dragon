@@ -36,7 +36,7 @@ public interface GrammarEvaluator {
   public Expr instr_assign(Literal id,Expr expr);
   /** This methods is called after the reduction of the non terminal instr
    *  by the grammar production instr_assign_lambda.
-   *  <code>instr ::= id assign antislash params arrow eol block rpar</code>
+   *  <code>instr ::= id assign antislash params eol block rpar</code>
    */
   public Expr instr_assign_lambda(Literal id,Array<Parameter> params,Array<Expr> block);
   /** This methods is called after the reduction of the non terminal instr
@@ -136,7 +136,7 @@ public interface GrammarEvaluator {
   public Expr expr_funcall(Literal name,Array<Expr> args);
   /** This methods is called after the reduction of the non terminal expr
    *  by the grammar production expr_funcall_lambda.
-   *  <code>expr ::= name lpar args antislash params arrow eol block rpar</code>
+   *  <code>expr ::= name lpar args antislash params eol block rpar</code>
    */
   public Expr expr_funcall_lambda(Literal name,Array<Expr> args,Array<Parameter> params,Array<Expr> block);
   /** This methods is called after the reduction of the non terminal expr
@@ -146,7 +146,7 @@ public interface GrammarEvaluator {
   public Expr expr_mthcall(Expr expr,Literal name,Array<Expr> args);
   /** This methods is called after the reduction of the non terminal expr
    *  by the grammar production expr_mthcall_lambda.
-   *  <code>expr ::= expr dot name lpar args antislash params arrow eol block rpar</code>
+   *  <code>expr ::= expr dot name lpar args antislash params eol block rpar</code>
    */
   public Expr expr_mthcall_lambda(Expr expr,Literal name,Array<Expr> args,Array<Parameter> params,Array<Expr> block);
   /** This methods is called after the reduction of the non terminal expr

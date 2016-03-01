@@ -38,7 +38,7 @@ public class Literal implements Expr {
       return value + ':';
     case STRING:
       return '\'' + value + '\'';
-    default: //case COMMENT
+    default: // case COMMENT:
       return '"' + value + '"';
     }
   }

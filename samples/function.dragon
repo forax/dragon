@@ -1,6 +1,6 @@
 def(addOne: \x -> x + 1)
 
-def(printNums: \x ->
+def(printNums: \x
   i = 0
   while(i < x
     print(i)

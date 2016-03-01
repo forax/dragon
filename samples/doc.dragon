@@ -1,4 +1,4 @@
-def(doc: \function ->
+def(doc: \function
   "return the documentation of a function"
   function.body.exprs.get(0).value
 )

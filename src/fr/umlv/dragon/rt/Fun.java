@@ -48,7 +48,7 @@ public class Fun implements Expr {
   public void prettyPrint(StringBuilder builder, String spaces) {
     builder.append('\\');
     builder.append(params.stream().map(Parameter::toString).collect(joining(", ")));
-    builder.append(" -> ");
+    builder.append(" -> ");  //FIXME
     body.prettyPrint(builder, spaces);
   }
 }

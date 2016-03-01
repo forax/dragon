@@ -46,9 +46,9 @@ tokens:
   _return = 'return'
   
   
-  text = "'[^']*'|\u0022[^\u0022]*\u0022|[^ \t\r\n=.:,();]+:"
+  text = "'[^']*'|\u0022[^\u0022]*\u0022|[^ \t\r\n\\=.:,()[\]{};]+:"
   integer = "[0-9]+"
-  id = "[^ \t\r\n\\=.:,();]+"   [id]
+  id = "[^ \t\r\n\\=.:,()[\]{};]+"   [id]
  
 blanks:
  space = "( |\t|\r|\n|,)"
@@ -81,11 +81,11 @@ productions:
      |      { eoi_empty }
      ;       
        
- instr = expr eoi                                         { instr_expr }
-       | 'id' '=' expr eoi                                { instr_assign }
-       | 'id' '=' 'antislash' params '->' 'eol' block ')' { instr_assign_lambda }
-       | 'while' '(' expr block ')'                       { instr_while }
-       | 'return' expr eoi                                { instr_return }
+ instr = expr eoi                                    { instr_expr }
+       | 'id' '=' expr eoi                           { instr_assign }
+       | 'id' '=' 'antislash' params 'eol' block ')' { instr_assign_lambda }
+       | 'while' '(' expr block ')'                  { instr_while }
+       | 'return' expr eoi                           { instr_return }
        ;
        
  args = args expr  { args_rec }
@@ -98,42 +98,42 @@ productions:
       
  params = params param { params_rec }
         |              { params_empty }
-        ;     
+        ;
        
  name = 'id'    { name_id }
       | 'text'  { name_text }
       ;      
        
- expr = 'integer'                                      { expr_numeric }
-      | name                                     [id]  { expr_name }
+ expr = 'integer'                                     { expr_numeric }
+      | name                                    [id]  { expr_name }
       
-      | '(' block')'                                   { expr_parens }
-      | '[' args ']'                                   { expr_array }
-      | '{' args '}'                                   { expr_dict }
+      | '(' block')'                                  { expr_parens }
+      | '[' args ']'                                  { expr_array }
+      | '{' args '}'                                  { expr_dict }
       
-      | 'if' '(' expr expr expr ')'                    { expr_if }
-      | 'if' '(' expr expr ')'                         { expr_if_unbalanced }
+      | 'if' '(' expr expr expr ')'                   { expr_if }
+      | 'if' '(' expr expr ')'                        { expr_if_unbalanced }
       
-      | 'antislash' params '->' expr         [lambda]  { expr_lambda_expr }
+      | 'antislash' params '->' expr        [lambda]  { expr_lambda_expr }
       
-      | name '(' args ')'                                     [parens] { expr_funcall }
-      | name '(' args 'antislash' params '->' 'eol' block ')' [parens] { expr_funcall_lambda }
+      | name '(' args ')'                                    [parens] { expr_funcall }
+      | name '(' args 'antislash' params 'eol' block ')' [parens] { expr_funcall_lambda }
       
-      | expr '.' name '(' args ')'                                       { expr_mthcall }
-      | expr '.' name '(' args 'antislash' params '->' 'eol' block ')'   { expr_mthcall_lambda }
+      | expr '.' name '(' args ')'                                      { expr_mthcall }
+      | expr '.' name '(' args 'antislash' params 'eol' block ')'   { expr_mthcall_lambda }
       
-      | expr '.' name                        [dot]     { expr_access }
+      | expr '.' name                        [dot]    { expr_access }
       
-      | expr '*' expr                        [mult]    { expr_mul }
-      | expr '/' expr                        [mult]    { expr_div }
-      | expr 'rem' expr                      [mult]    { expr_rem }
-      | expr '+' expr                        [plus]    { expr_add }
-      | expr '-' expr                        [plus]    { expr_sub }
-      | expr '==' expr                       [test]    { expr_eq }
-      | expr '!=' expr                       [test]    { expr_ne }
-      | expr '<' expr                        [test]    { expr_lt }
-      | expr '<=' expr                       [test]    { expr_le }
-      | expr '>' expr                        [test]    { expr_gt }
-      | expr '>=' expr                       [test]    { expr_ge }
+      | expr '*' expr                        [mult]   { expr_mul }
+      | expr '/' expr                        [mult]   { expr_div }
+      | expr 'rem' expr                      [mult]   { expr_rem }
+      | expr '+' expr                        [plus]   { expr_add }
+      | expr '-' expr                        [plus]   { expr_sub }
+      | expr '==' expr                       [test]   { expr_eq }
+      | expr '!=' expr                       [test]   { expr_ne }
+      | expr '<' expr                        [test]   { expr_lt }
+      | expr '<=' expr                       [test]   { expr_le }
+      | expr '>' expr                        [test]   { expr_gt }
+      | expr '>=' expr                       [test]   { expr_ge }
       ;
   
