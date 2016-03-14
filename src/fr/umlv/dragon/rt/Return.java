@@ -1,7 +1,5 @@
 package fr.umlv.dragon.rt;
 
-import fr.umlv.dragon.ast.Expr;
-
 public class Return implements Expr {
   private final Expr expr;
 

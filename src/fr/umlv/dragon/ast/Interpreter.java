@@ -12,10 +12,12 @@ import fr.umlv.dragon.rt.Array;
 import fr.umlv.dragon.rt.Block;
 import fr.umlv.dragon.rt.Call;
 import fr.umlv.dragon.rt.Dict;
+import fr.umlv.dragon.rt.Expr;
 import fr.umlv.dragon.rt.Fun;
 import fr.umlv.dragon.rt.If;
 import fr.umlv.dragon.rt.Literal;
 import fr.umlv.dragon.rt.Load;
+import fr.umlv.dragon.rt.NativeCall;
 import fr.umlv.dragon.rt.Parameter;
 import fr.umlv.dragon.rt.RTError;
 import fr.umlv.dragon.rt.Return;
@@ -185,14 +187,18 @@ public class Interpreter {
     VISITOR = visitor;
   }
   
-  public static Object interpret(Fun fun, Dict globals, Object receiver, Object[] args) {
+  public static Fun createFun(Array<Parameter> params, Block body) {
+    return new Fun(params, body, (globals, receiver, args) -> interpret(params, body, globals, receiver, args));
+  }
+  
+  public static Object interpret(Array<Parameter> parameters, Block body, Dict globals, Object receiver, Object[] args) {
     Env env = new Env(globals);
     env.store("this", receiver);
     for(int i = 0; i < args.length; i++) {
-      env.store(fun.params().get(i).name(), args[i]);
+      env.store(parameters.get(i).name(), args[i]);
     }
     try {
-      return VISITOR.call(fun.body(), env);
+      return VISITOR.call(body, env);
     } catch(ReturnError returnError) {
       return returnError.value;
     }

@@ -4,7 +4,7 @@ directives:
 imports:
  fr.umlv.dragon.rt.Array
  fr.umlv.dragon.rt.Literal
- fr.umlv.dragon.ast.Expr
+ fr.umlv.dragon.rt.Expr
  fr.umlv.dragon.rt.Parameter
   
 priorities:

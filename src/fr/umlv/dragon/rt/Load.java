@@ -2,8 +2,6 @@ package fr.umlv.dragon.rt;
 
 import static fr.umlv.dragon.rt.Utils.requireNonNull;
 
-import fr.umlv.dragon.ast.Expr;
-
 public class Load implements Expr {
   private final String name;
 

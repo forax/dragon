@@ -1,7 +1,5 @@
 package fr.umlv.dragon.rt;
 
-import fr.umlv.dragon.ast.Expr;
-
 public class Literal implements Expr {
   public enum Kind {
     ID,

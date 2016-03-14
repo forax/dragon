@@ -1,7 +1,7 @@
 package fr.umlv.dragon.grammar.tools;
 
-  import fr.umlv.dragon.ast.Expr;
-    import fr.umlv.dragon.rt.Array;
+  import fr.umlv.dragon.rt.Array;
+    import fr.umlv.dragon.rt.Expr;
     import fr.umlv.dragon.rt.Literal;
     import fr.umlv.dragon.rt.Parameter;
   

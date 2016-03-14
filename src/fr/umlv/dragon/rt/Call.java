@@ -4,8 +4,6 @@ import static fr.umlv.dragon.rt.Utils.requireNonNull;
 
 import java.util.Optional;
 
-import fr.umlv.dragon.ast.Expr;
-
 public class Call implements Expr {
   private final /*maybenull*/Expr receiver;
   private final Expr name;

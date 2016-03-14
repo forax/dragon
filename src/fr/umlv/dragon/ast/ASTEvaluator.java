@@ -1,9 +1,20 @@
 package fr.umlv.dragon.ast;
 
+import static fr.umlv.dragon.ast.Interpreter.createFun;
+import static fr.umlv.dragon.rt.Literal.Kind.COMMENT;
+import static fr.umlv.dragon.rt.Literal.Kind.ID;
+import static fr.umlv.dragon.rt.Literal.Kind.INTEGER;
+import static fr.umlv.dragon.rt.Literal.Kind.STRING;
+import static fr.umlv.dragon.rt.Literal.Kind.SYMBOL;
+
+import java.util.Optional;
+
+import fr.umlv.dragon.grammar.tools.GrammarEvaluator;
+import fr.umlv.dragon.grammar.tools.TerminalEvaluator;
 import fr.umlv.dragon.rt.Array;
 import fr.umlv.dragon.rt.Block;
 import fr.umlv.dragon.rt.Call;
-import fr.umlv.dragon.rt.Fun;
+import fr.umlv.dragon.rt.Expr;
 import fr.umlv.dragon.rt.If;
 import fr.umlv.dragon.rt.Literal;
 import fr.umlv.dragon.rt.Load;
@@ -12,21 +23,10 @@ import fr.umlv.dragon.rt.Return;
 import fr.umlv.dragon.rt.Store;
 import fr.umlv.dragon.rt.While;
 
-import static fr.umlv.dragon.rt.Literal.Kind.*;
-
-import java.util.Optional;
-
-import fr.umlv.dragon.grammar.tools.GrammarEvaluator;
-import fr.umlv.dragon.grammar.tools.TerminalEvaluator;
-
-public class ASTEvaluator implements GrammarEvaluator {
-  private Block script;
-
-  public Block getScript() {
-    return script;
-  }
+class ASTEvaluator implements GrammarEvaluator {
+  Block script;
   
-  public static class TokenEvaluator implements TerminalEvaluator<CharSequence> {
+  static class TokenEvaluator implements TerminalEvaluator<CharSequence> {
     @Override
     public Literal integer(CharSequence data) {
       return new Literal(INTEGER, data.toString());
@@ -73,7 +73,7 @@ public class ASTEvaluator implements GrammarEvaluator {
   }
   @Override
   public Expr instr_assign_lambda(Literal id, Array<Parameter> params, Array<Expr> block) {
-    return new Store(id.value(), new Fun(params.freeze(), new Block(block.freeze())));
+    return new Store(id.value(), createFun(params.freeze(), new Block(block.freeze())));
   }
 
   @Override
@@ -158,7 +158,7 @@ public class ASTEvaluator implements GrammarEvaluator {
 
   @Override
   public Expr expr_lambda_expr(Array<Parameter> params, Expr expr) {
-    return new Fun(params.freeze(), new Block(new Array<Expr>().append(expr).freeze()));
+    return createFun(params.freeze(), new Block(new Array<Expr>().append(expr).freeze()));
   }
 
   @Override
@@ -167,7 +167,7 @@ public class ASTEvaluator implements GrammarEvaluator {
   }
   @Override
   public Expr expr_funcall_lambda(Literal id, Array<Expr> args, Array<Parameter> params, Array<Expr> block) {
-    return new Call(Optional.empty(), new Load(id.value()), args.append(new Fun(params.freeze(), new Block(block.freeze()))).freeze());
+    return new Call(Optional.empty(), new Load(id.value()), args.append(createFun(params.freeze(), new Block(block.freeze()))).freeze());
   }
   
   @Override
@@ -180,7 +180,7 @@ public class ASTEvaluator implements GrammarEvaluator {
   }
   @Override
   public Expr expr_mthcall_lambda(Expr expr, Literal name, Array<Expr> args, Array<Parameter> params, Array<Expr> block) {
-    return new Call(Optional.of(expr), name, args.append(new Fun(params.freeze(), new Block(block.freeze()))).freeze());
+    return new Call(Optional.of(expr), name, args.append(createFun(params.freeze(), new Block(block.freeze()))).freeze());
   }
 
   private static Call callOp(String name, Expr expr1, Expr expr2) {

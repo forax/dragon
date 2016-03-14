@@ -2,8 +2,6 @@ package fr.umlv.dragon.rt;
 
 import java.util.stream.Collectors;
 
-import fr.umlv.dragon.ast.Expr;
-
 public class While implements Expr {
   private final Expr condition;
   private final Block body;

@@ -16,7 +16,7 @@
     	<fileset dir="${classes}"/>
     	<zipfileset includes="**/*.class" src="${lib.dir}/tatoo-runtime.jar"/>
     	<manifest>
-    	  <attribute name="Main-Class" value="fr.umlv.dragon.Main"/>
+    	  <attribute name="Main-Class" value="fr.umlv.dragon.main.Main"/>
     	</manifest>
     </jar>
   </target>

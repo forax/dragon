@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
+import fr.umlv.dragon.rt.Expr;
+
 public class Visitor<E, R> {
   private final HashMap<Class<? extends Expr>, BiFunction<Expr, ? super E, ? extends R>> map = new HashMap<>();
   

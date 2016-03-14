@@ -1,7 +1,5 @@
 package fr.umlv.dragon.rt;
 
-import fr.umlv.dragon.ast.Expr;
-
 public class If implements Expr {
   private final Expr condition;
   private final Expr trueExpr;

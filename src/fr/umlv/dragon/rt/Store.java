@@ -1,7 +1,5 @@
 package fr.umlv.dragon.rt;
 
-import fr.umlv.dragon.ast.Expr;
-
 public class Store implements Expr {
   private final String name;
   private final Expr expr;
