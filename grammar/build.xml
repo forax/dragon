@@ -4,7 +4,7 @@
   <property name="tatoo.dir" location="build-lib"/>
   <property name="tatoo.jar" location="${tatoo.dir}/tatoo.jar"/>
 	
-  <property name="gen-src" value="gen-src"/>
+  <property name="gen-src" value="gen-src/fr.umlv.dragon.grammar"/>
   <property name="ebnf.file" value="dragon.ebnf"/>
   	
   <property name="lexer.package" value="fr.umlv.dragon.grammar.lexer"/>

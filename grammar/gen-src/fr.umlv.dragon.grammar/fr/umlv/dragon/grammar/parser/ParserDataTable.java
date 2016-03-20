@@ -1,0 +1,643 @@
+package fr.umlv.dragon.grammar.parser;
+
+import fr.umlv.dragon.grammar.parser.NonTerminalEnum;
+import fr.umlv.dragon.grammar.parser.ProductionEnum;
+import fr.umlv.dragon.grammar.parser.TerminalEnum;
+import fr.umlv.tatoo.runtime.parser.AcceptAction;
+import fr.umlv.tatoo.runtime.parser.Action;
+import fr.umlv.tatoo.runtime.parser.BranchAction;
+import fr.umlv.tatoo.runtime.parser.ErrorAction;
+import fr.umlv.tatoo.runtime.parser.ExitAction;
+import fr.umlv.tatoo.runtime.parser.ParserTable;
+import fr.umlv.tatoo.runtime.parser.ReduceAction;
+import fr.umlv.tatoo.runtime.parser.ShiftAction;
+import fr.umlv.tatoo.runtime.parser.StateMetadata;
+import java.util.EnumMap;
+
+/** 
+ *  This class is generated - please do not edit it 
+ */
+public class ParserDataTable {
+  private ParserDataTable() {
+   accept = AcceptAction.<TerminalEnum,ProductionEnum,VersionEnum>getInstance();
+   exit = ExitAction.<TerminalEnum,ProductionEnum,VersionEnum>getInstance();
+    initblockGotoes();
+    initargsGotoes();
+    initeoiGotoes();
+    initinstrGotoes();
+    initparamsGotoes();
+    initparamGotoes();
+    initnameGotoes();
+    initexprGotoes();
+    initscriptGotoes();
+    reduceexpr_if = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_if,6,exprGotoes);
+    reduceexpr_name = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_name,1,exprGotoes);
+    reduceexpr_div = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_div,3,exprGotoes);
+    reduceargs_empty = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.args_empty,0,argsGotoes);
+    reduceexpr_array = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_array,3,exprGotoes);
+    reduceinstr_expr = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.instr_expr,2,instrGotoes);
+    reduceexpr_funcall = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_funcall,4,exprGotoes);
+    reduceexpr_lambda_expr = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_lambda_expr,4,exprGotoes);
+    reduceinstr_while = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.instr_while,5,instrGotoes);
+    reduceexpr_gt = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_gt,3,exprGotoes);
+    reduceexpr_ne = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_ne,3,exprGotoes);
+    reduceexpr_le = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_le,3,exprGotoes);
+    reduceparams_empty = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.params_empty,0,paramsGotoes);
+    reduceexpr_numeric = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_numeric,1,exprGotoes);
+    reduceeoi_semi = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.eoi_semi,1,eoiGotoes);
+    reduceexpr_eq = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_eq,3,exprGotoes);
+    reduceexpr_access = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_access,3,exprGotoes);
+    reduceexpr_lt = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_lt,3,exprGotoes);
+    reduceexpr_funcall_lambda = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_funcall_lambda,8,exprGotoes);
+    reduceargs_rec = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.args_rec,2,argsGotoes);
+    reduceexpr_if_unbalanced = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_if_unbalanced,5,exprGotoes);
+    reduceexpr_parens = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_parens,3,exprGotoes);
+    reduceexpr_mthcall_lambda = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_mthcall_lambda,10,exprGotoes);
+    reducescript = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.script,1,scriptGotoes);
+    reduceinstr_return = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.instr_return,3,instrGotoes);
+    reduceexpr_mul = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_mul,3,exprGotoes);
+    reduceparams_rec = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.params_rec,2,paramsGotoes);
+    reducename_text = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.name_text,1,nameGotoes);
+    reduceparam_id = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.param_id,1,paramGotoes);
+    reduceexpr_sub = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_sub,3,exprGotoes);
+    reduceexpr_rem = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_rem,3,exprGotoes);
+    reduceblock_empty = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.block_empty,0,blockGotoes);
+    reduceexpr_dict = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_dict,3,exprGotoes);
+    reduceexpr_add = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_add,3,exprGotoes);
+    reduceblock_rec = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.block_rec,2,blockGotoes);
+    reduceinstr_assign = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.instr_assign,4,instrGotoes);
+    reducename_id = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.name_id,1,nameGotoes);
+    reduceinstr_assign_lambda = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.instr_assign_lambda,7,instrGotoes);
+    reduceeoi_empty = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.eoi_empty,0,eoiGotoes);
+    reduceexpr_ge = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_ge,3,exprGotoes);
+    reduceparam_id_varargs = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.param_id_varargs,2,paramGotoes);
+    reduceexpr_mthcall = new ReduceAction<TerminalEnum,ProductionEnum,VersionEnum>(ProductionEnum.expr_mthcall,6,exprGotoes);
+    shift86 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(86);
+    shift31 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(31);
+    shift16 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(16);
+    shift44 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(44);
+    shift22 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(22);
+    shift42 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(42);
+    shift64 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(64);
+    shift50 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(50);
+    shift60 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(60);
+    shift78 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(78);
+    shift17 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(17);
+    shift37 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(37);
+    shift35 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(35);
+    shift46 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(46);
+    shift28 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(28);
+    shift5 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(5);
+    shift8 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(8);
+    shift62 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(62);
+    shift72 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(72);
+    shift90 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(90);
+    shift9 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(9);
+    shift70 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(70);
+    shift7 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(7);
+    shift18 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(18);
+    shift30 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(30);
+    shift14 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(14);
+    shift4 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(4);
+    shift33 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(33);
+    shift2 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(2);
+    shift12 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(12);
+    shift11 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(11);
+    shift26 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(26);
+    shift3 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(3);
+    shift52 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(52);
+    shift84 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(84);
+    shift68 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(68);
+    shift81 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(81);
+    shift56 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(56);
+    shift10 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(10);
+    shift54 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(54);
+    shift19 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(19);
+    shift48 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(48);
+    shift32 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(32);
+    shift40 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(40);
+    shift21 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(21);
+    shift74 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(74);
+    shift24 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(24);
+    shift66 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(66);
+    shift58 = new ShiftAction<TerminalEnum,ProductionEnum,VersionEnum>(58);
+    error0 = new ErrorAction<TerminalEnum,ProductionEnum,VersionEnum>("parse error");
+    branch0 = new BranchAction<TerminalEnum,ProductionEnum,VersionEnum>("parse error");
+    initdivArray();
+    init__eof__Array();
+    initmulArray();
+    initeolArray();
+    initlparArray();
+    initroptArray();
+    initassignArray();
+    init_ifArray();
+    initrparArray();
+    initaddArray();
+    initgeArray();
+    initidArray();
+    initarrowArray();
+    initeqArray();
+    initsubArray();
+    initneArray();
+    init_returnArray();
+    initremArray();
+    initltArray();
+    initgtArray();
+    initleArray();
+    initsemicolonArray();
+    init_whileArray();
+    inittextArray();
+    initantislashArray();
+    initloptArray();
+    initlcurlArray();
+    initrcurlArray();
+    initintegerArray();
+    initdotArray();
+    EnumMap<TerminalEnum,Action<TerminalEnum,ProductionEnum,VersionEnum>[]> tableMap =
+      new EnumMap<TerminalEnum,Action<TerminalEnum,ProductionEnum,VersionEnum>[]>(TerminalEnum.class);
+      
+    tableMap.put(TerminalEnum.div,divArray);
+    tableMap.put(TerminalEnum.__eof__,__eof__Array);
+    tableMap.put(TerminalEnum.mul,mulArray);
+    tableMap.put(TerminalEnum.eol,eolArray);
+    tableMap.put(TerminalEnum.lpar,lparArray);
+    tableMap.put(TerminalEnum.ropt,roptArray);
+    tableMap.put(TerminalEnum.assign,assignArray);
+    tableMap.put(TerminalEnum._if,_ifArray);
+    tableMap.put(TerminalEnum.rpar,rparArray);
+    tableMap.put(TerminalEnum.add,addArray);
+    tableMap.put(TerminalEnum.ge,geArray);
+    tableMap.put(TerminalEnum.id,idArray);
+    tableMap.put(TerminalEnum.arrow,arrowArray);
+    tableMap.put(TerminalEnum.eq,eqArray);
+    tableMap.put(TerminalEnum.sub,subArray);
+    tableMap.put(TerminalEnum.ne,neArray);
+    tableMap.put(TerminalEnum._return,_returnArray);
+    tableMap.put(TerminalEnum.rem,remArray);
+    tableMap.put(TerminalEnum.lt,ltArray);
+    tableMap.put(TerminalEnum.gt,gtArray);
+    tableMap.put(TerminalEnum.le,leArray);
+    tableMap.put(TerminalEnum.semicolon,semicolonArray);
+    tableMap.put(TerminalEnum._while,_whileArray);
+    tableMap.put(TerminalEnum.text,textArray);
+    tableMap.put(TerminalEnum.antislash,antislashArray);
+    tableMap.put(TerminalEnum.lopt,loptArray);
+    tableMap.put(TerminalEnum.lcurl,lcurlArray);
+    tableMap.put(TerminalEnum.rcurl,rcurlArray);
+    tableMap.put(TerminalEnum.integer,integerArray);
+    tableMap.put(TerminalEnum.dot,dotArray);
+    initBranchArrayTable();
+    
+    StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>[] tableMetadata = createStateMetadataTable();
+    
+    EnumMap<NonTerminalEnum,Integer> tableStarts =
+      new EnumMap<NonTerminalEnum,Integer>(NonTerminalEnum.class);
+    tableStarts.put(NonTerminalEnum.script,0);
+    table = new ParserTable<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>(tableMap,branchArrayTable,tableMetadata,tableStarts,VersionEnum.values(),93,TerminalEnum.__eof__,null);
+  } 
+
+  // metadata aren't stored in local vars because it freak-out the register allocator of android
+  @SuppressWarnings("unchecked")
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>[] createStateMetadataTable() {
+        metadata0add_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.add,null);
+    metadata0_return_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum._return,null);
+    metadata0param_metadata0reduceparams_rec = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.param,reduceparams_rec);
+    metadata0lopt_metadata0reduceargs_empty = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.lopt,reduceargs_empty);
+    metadata0semicolon_metadata0reduceeoi_semi = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.semicolon,reduceeoi_semi);
+    metadata0lcurl_metadata0reduceargs_empty = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.lcurl,reduceargs_empty);
+    metadata0assign_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.assign,null);
+    metadata0rem_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rem,null);
+    metadata0arrow_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.arrow,null);
+    metadata0integer_metadata0reduceexpr_numeric = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.integer,reduceexpr_numeric);
+    metadata0rpar_metadata0reduceexpr_mthcall_lambda = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceexpr_mthcall_lambda);
+    metadata0block_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.block,null);
+    metadata0params_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.params,null);
+    metadata0eq_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.eq,null);
+    metadata0name_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.name,null);
+    metadata0gt_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.gt,null);
+    metadata0sub_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.sub,null);
+    metadata0expr_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.expr,null);
+    metadata0id_metadata0reducename_id = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.id,reducename_id);
+    metadata0rpar_metadata0reduceexpr_mthcall = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceexpr_mthcall);
+    metadata0antislash_metadata0reduceparams_empty = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.antislash,reduceparams_empty);
+    metadata0ropt_metadata0reduceexpr_array = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.ropt,reduceexpr_array);
+    metadata0le_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.le,null);
+    metadata0rpar_metadata0reduceexpr_parens = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceexpr_parens);
+    metadata0lt_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.lt,null);
+    metadata0rpar_metadata0reduceinstr_while = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceinstr_while);
+    metadata0rcurl_metadata0reduceexpr_dict = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rcurl,reduceexpr_dict);
+    metadata0rpar_metadata0reduceexpr_if_unbalanced = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceexpr_if_unbalanced);
+    metadata0__eof___metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.__eof__,null);
+    metadata0eol_metadata0reduceblock_empty = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.eol,reduceblock_empty);
+    metadata0ge_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.ge,null);
+    metadata0mul_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.mul,null);
+    metadata0eoi_metadata0reduceinstr_return = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.eoi,reduceinstr_return);
+    metadata0lpar_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.lpar,null);
+    metadata0instr_metadata0reduceblock_rec = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.instr,reduceblock_rec);
+    metadata0script_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.script,null);
+    metadata0ne_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.ne,null);
+    metadata0text_metadata0reducename_text = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.text,reducename_text);
+    metadata0args_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.args,null);
+    metadata0lpar_metadata0reduceblock_empty = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.lpar,reduceblock_empty);
+    metadata0lpar_metadata0reduceargs_empty = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.lpar,reduceargs_empty);
+    metadata0rpar_metadata0reduceexpr_funcall_lambda = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceexpr_funcall_lambda);
+    metadata0rpar_metadata0reduceexpr_if = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceexpr_if);
+    metadata0eoi_metadata0reduceinstr_expr = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.eoi,reduceinstr_expr);
+    metadata0id_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.id,null);
+    metadata0rpar_metadata0reduceexpr_funcall = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceexpr_funcall);
+    metadata0_if_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum._if,null);
+    metadata0rpar_metadata0reduceinstr_assign_lambda = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.rpar,reduceinstr_assign_lambda);
+    metadata0dot_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.dot,null);
+    metadata0eoi_metadata0reduceinstr_assign = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(NonTerminalEnum.eoi,reduceinstr_assign);
+    metadata0div_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.div,null);
+    metadata0mul_metadata0reduceparam_id_varargs = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum.mul,reduceparam_id_varargs);
+    metadata0null_metadata0reduceblock_empty = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithNonTerminal(null,reduceblock_empty);
+    metadata0_while_metadata0null = StateMetadata.<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>createAllVersionWithTerminal(TerminalEnum._while,null);
+
+    return (StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum>[])new StateMetadata<?,?,?,?>[]{metadata0null_metadata0reduceblock_empty,metadata0block_metadata0null,metadata0_while_metadata0null,metadata0lpar_metadata0null,metadata0text_metadata0reducename_text,metadata0antislash_metadata0reduceparams_empty,metadata0params_metadata0null,metadata0id_metadata0null,metadata0mul_metadata0reduceparam_id_varargs,metadata0arrow_metadata0null,metadata0_if_metadata0null,metadata0lpar_metadata0null,metadata0lopt_metadata0reduceargs_empty,metadata0args_metadata0null,metadata0lcurl_metadata0reduceargs_empty,metadata0args_metadata0null,metadata0rcurl_metadata0reduceexpr_dict,metadata0id_metadata0reducename_id,metadata0integer_metadata0reduceexpr_numeric,metadata0lpar_metadata0reduceblock_empty,metadata0block_metadata0null,metadata0rpar_metadata0reduceexpr_parens,metadata0_return_metadata0null,metadata0name_metadata0null,metadata0lpar_metadata0reduceargs_empty,metadata0args_metadata0null,metadata0antislash_metadata0reduceparams_empty,metadata0params_metadata0null,metadata0eol_metadata0reduceblock_empty,metadata0block_metadata0null,metadata0rpar_metadata0reduceexpr_funcall_lambda,metadata0id_metadata0null,metadata0assign_metadata0null,metadata0antislash_metadata0reduceparams_empty,metadata0params_metadata0null,metadata0eol_metadata0reduceblock_empty,metadata0block_metadata0null,metadata0rpar_metadata0reduceinstr_assign_lambda,metadata0instr_metadata0reduceblock_rec,metadata0expr_metadata0null,metadata0sub_metadata0null,metadata0expr_metadata0null,metadata0div_metadata0null,metadata0expr_metadata0null,metadata0ne_metadata0null,metadata0expr_metadata0null,metadata0mul_metadata0null,metadata0expr_metadata0null,metadata0rem_metadata0null,metadata0expr_metadata0null,metadata0add_metadata0null,metadata0expr_metadata0null,metadata0gt_metadata0null,metadata0expr_metadata0null,metadata0lt_metadata0null,metadata0expr_metadata0null,metadata0le_metadata0null,metadata0expr_metadata0null,metadata0ge_metadata0null,metadata0expr_metadata0null,metadata0eq_metadata0null,metadata0expr_metadata0null,metadata0dot_metadata0null,metadata0name_metadata0null,metadata0lpar_metadata0reduceargs_empty,metadata0args_metadata0null,metadata0antislash_metadata0reduceparams_empty,metadata0params_metadata0null,metadata0eol_metadata0reduceblock_empty,metadata0block_metadata0null,metadata0rpar_metadata0reduceexpr_mthcall_lambda,metadata0param_metadata0reduceparams_rec,metadata0rpar_metadata0reduceexpr_mthcall,metadata0expr_metadata0null,metadata0semicolon_metadata0reduceeoi_semi,metadata0eoi_metadata0reduceinstr_expr,metadata0expr_metadata0null,metadata0eoi_metadata0reduceinstr_assign,metadata0rpar_metadata0reduceexpr_funcall,metadata0expr_metadata0null,metadata0eoi_metadata0reduceinstr_return,metadata0ropt_metadata0reduceexpr_array,metadata0expr_metadata0null,metadata0expr_metadata0null,metadata0rpar_metadata0reduceexpr_if_unbalanced,metadata0expr_metadata0null,metadata0rpar_metadata0reduceexpr_if,metadata0expr_metadata0null,metadata0expr_metadata0null,metadata0block_metadata0null,metadata0rpar_metadata0reduceinstr_while,metadata0script_metadata0null,metadata0__eof___metadata0null};
+  }
+
+  
+  private int[] blockGotoes;
+
+  private void initblockGotoes() {
+    blockGotoes = 
+      new int[]{1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,20,-1,-1,-1,-1,-1,-1,-1,-1,29,-1,-1,-1,-1,-1,-1,36,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,69,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,89,-1,-1,-1,-1};
+  }
+  
+  private int[] argsGotoes;
+
+  private void initargsGotoes() {
+    argsGotoes = 
+      new int[]{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,13,-1,15,-1,-1,-1,-1,-1,-1,-1,-1,-1,25,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,65,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+  }
+  
+  private int[] eoiGotoes;
+
+  private void initeoiGotoes() {
+    eoiGotoes = 
+      new int[]{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,75,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,77,-1,-1,80,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+  }
+  
+  private int[] instrGotoes;
+
+  private void initinstrGotoes() {
+    instrGotoes = 
+      new int[]{-1,38,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,38,-1,-1,-1,-1,-1,-1,-1,-1,38,-1,-1,-1,-1,-1,-1,38,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,38,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,38,-1,-1,-1};
+  }
+  
+  private int[] paramsGotoes;
+
+  private void initparamsGotoes() {
+    paramsGotoes = 
+      new int[]{-1,-1,-1,-1,-1,6,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,27,-1,-1,-1,-1,-1,-1,34,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,67,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+  }
+  
+  private int[] paramGotoes;
+
+  private void initparamGotoes() {
+    paramGotoes = 
+      new int[]{-1,-1,-1,-1,-1,-1,71,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,71,-1,-1,-1,-1,-1,-1,71,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,71,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+  }
+  
+  private int[] nameGotoes;
+
+  private void initnameGotoes() {
+    nameGotoes = 
+      new int[]{-1,23,-1,23,-1,-1,-1,-1,-1,23,-1,23,-1,23,-1,23,-1,-1,-1,-1,23,-1,23,-1,-1,23,-1,-1,-1,23,-1,-1,23,-1,-1,-1,23,-1,-1,-1,23,-1,23,-1,23,-1,23,-1,23,-1,23,-1,23,-1,23,-1,23,-1,23,-1,23,-1,63,-1,-1,23,-1,-1,-1,23,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,23,23,-1,-1,-1,-1,-1,23,-1,-1,-1};
+  }
+  
+  private int[] exprGotoes;
+
+  private void initexprGotoes() {
+    exprGotoes = 
+      new int[]{-1,39,-1,88,-1,-1,-1,-1,-1,87,-1,82,-1,73,-1,73,-1,-1,-1,-1,39,-1,79,-1,-1,73,-1,-1,-1,39,-1,-1,76,-1,-1,-1,39,-1,-1,-1,41,-1,43,-1,45,-1,47,-1,49,-1,51,-1,53,-1,55,-1,57,-1,59,-1,61,-1,-1,-1,-1,73,-1,-1,-1,39,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,83,85,-1,-1,-1,-1,-1,39,-1,-1,-1};
+  }
+  
+  private int[] scriptGotoes;
+
+  private void initscriptGotoes() {
+    scriptGotoes = 
+      new int[]{91,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+  }
+
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] divArray;
+  @SuppressWarnings("unchecked")
+  private void initdivArray() {
+    divArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift42,branch0,shift42,branch0,reduceexpr_div,branch0,shift42,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,shift42,branch0,shift42,branch0,shift42,branch0,shift42,branch0,shift42,branch0,shift42,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift42,branch0,branch0,shift42,branch0,reduceexpr_funcall,shift42,branch0,reduceexpr_array,shift42,shift42,reduceexpr_if_unbalanced,shift42,reduceexpr_if,shift42,shift42,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] __eof__Array;
+  @SuppressWarnings("unchecked")
+  private void init__eof__Array() {
+    __eof__Array=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,reducescript,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,branch0,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,branch0,branch0,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,branch0,branch0,reduceinstr_while,accept,accept};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] mulArray;
+  @SuppressWarnings("unchecked")
+  private void initmulArray() {
+    mulArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,shift8,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift46,branch0,shift46,branch0,reduceexpr_div,branch0,shift46,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,shift46,branch0,shift46,branch0,shift46,branch0,shift46,branch0,shift46,branch0,shift46,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift46,branch0,branch0,shift46,branch0,reduceexpr_funcall,shift46,branch0,reduceexpr_array,shift46,shift46,reduceexpr_if_unbalanced,shift46,reduceexpr_if,shift46,shift46,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] eolArray;
+  @SuppressWarnings("unchecked")
+  private void initeolArray() {
+    eolArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceparam_id,reduceparam_id_varargs,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceparams_empty,shift28,branch0,branch0,branch0,branch0,branch0,reduceparams_empty,shift35,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceparams_empty,shift68,branch0,branch0,branch0,reduceparams_rec,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] lparArray;
+  @SuppressWarnings("unchecked")
+  private void initlparArray() {
+    lparArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift19,shift3,shift19,reducename_text,branch0,branch0,branch0,branch0,shift19,shift11,shift19,reduceargs_empty,shift19,reduceargs_empty,shift19,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift19,reduceexpr_parens,shift19,shift24,reduceargs_empty,shift19,branch0,branch0,reduceblock_empty,shift19,reduceexpr_funcall_lambda,reducename_id,shift19,branch0,branch0,reduceblock_empty,shift19,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift19,reduceexpr_sub,shift19,reduceexpr_div,shift19,reduceexpr_ne,shift19,reduceexpr_mul,shift19,reduceexpr_rem,shift19,reduceexpr_add,shift19,reduceexpr_gt,shift19,reduceexpr_lt,shift19,reduceexpr_le,shift19,reduceexpr_ge,shift19,reduceexpr_eq,branch0,shift64,reduceargs_empty,shift19,branch0,branch0,reduceblock_empty,shift19,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift19,shift19,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift19,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] roptArray;
+  @SuppressWarnings("unchecked")
+  private void initroptArray() {
+    roptArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceargs_empty,shift81,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,branch0,branch0,branch0,branch0,reduceexpr_funcall,branch0,branch0,reduceexpr_array,branch0,branch0,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,branch0,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] assignArray;
+  @SuppressWarnings("unchecked")
+  private void initassignArray() {
+    assignArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift32,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] _ifArray;
+  @SuppressWarnings("unchecked")
+  private void init_ifArray() {
+    _ifArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift10,branch0,shift10,reducename_text,branch0,branch0,branch0,branch0,shift10,branch0,shift10,reduceargs_empty,shift10,reduceargs_empty,shift10,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift10,reduceexpr_parens,shift10,reduceexpr_name,reduceargs_empty,shift10,branch0,branch0,reduceblock_empty,shift10,reduceexpr_funcall_lambda,reducename_id,shift10,branch0,branch0,reduceblock_empty,shift10,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift10,reduceexpr_sub,shift10,reduceexpr_div,shift10,reduceexpr_ne,shift10,reduceexpr_mul,shift10,reduceexpr_rem,shift10,reduceexpr_add,shift10,reduceexpr_gt,shift10,reduceexpr_lt,shift10,reduceexpr_le,shift10,reduceexpr_ge,shift10,reduceexpr_eq,branch0,reduceexpr_access,reduceargs_empty,shift10,branch0,branch0,reduceblock_empty,shift10,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift10,shift10,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift10,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] rparArray;
+  @SuppressWarnings("unchecked")
+  private void initrparArray() {
+    rparArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift21,reduceexpr_parens,branch0,reduceexpr_name,reduceargs_empty,shift78,branch0,branch0,reduceblock_empty,shift30,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,reduceblock_empty,shift37,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,reduceargs_empty,shift72,branch0,branch0,reduceblock_empty,shift70,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,branch0,shift84,reduceexpr_if_unbalanced,shift86,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift90,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] addArray;
+  @SuppressWarnings("unchecked")
+  private void initaddArray() {
+    addArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift50,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,shift50,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,shift50,branch0,shift50,branch0,shift50,branch0,shift50,branch0,shift50,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift50,branch0,branch0,shift50,branch0,reduceexpr_funcall,shift50,branch0,reduceexpr_array,shift50,shift50,reduceexpr_if_unbalanced,shift50,reduceexpr_if,shift50,shift50,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] geArray;
+  @SuppressWarnings("unchecked")
+  private void initgeArray() {
+    geArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift58,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift58,branch0,branch0,shift58,branch0,reduceexpr_funcall,shift58,branch0,reduceexpr_array,shift58,shift58,reduceexpr_if_unbalanced,shift58,reduceexpr_if,shift58,shift58,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] idArray;
+  @SuppressWarnings("unchecked")
+  private void initidArray() {
+    idArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift31,branch0,shift17,reducename_text,reduceparams_empty,shift7,reduceparam_id,reduceparam_id_varargs,shift17,branch0,shift17,reduceargs_empty,shift17,reduceargs_empty,shift17,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift31,reduceexpr_parens,shift17,reduceexpr_name,reduceargs_empty,shift17,reduceparams_empty,shift7,reduceblock_empty,shift31,reduceexpr_funcall_lambda,reducename_id,shift17,reduceparams_empty,shift7,reduceblock_empty,shift31,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift17,reduceexpr_sub,shift17,reduceexpr_div,shift17,reduceexpr_ne,shift17,reduceexpr_mul,shift17,reduceexpr_rem,shift17,reduceexpr_add,shift17,reduceexpr_gt,shift17,reduceexpr_lt,shift17,reduceexpr_le,shift17,reduceexpr_ge,shift17,reduceexpr_eq,shift17,reduceexpr_access,reduceargs_empty,shift17,reduceparams_empty,shift7,reduceblock_empty,shift31,reduceexpr_mthcall_lambda,reduceparams_rec,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift17,shift17,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift31,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] arrowArray;
+  @SuppressWarnings("unchecked")
+  private void initarrowArray() {
+    arrowArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,branch0,reduceparams_empty,shift9,reduceparam_id,reduceparam_id_varargs,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceparams_empty,shift9,branch0,branch0,branch0,branch0,branch0,reduceparams_empty,shift9,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceparams_empty,shift9,branch0,branch0,branch0,reduceparams_rec,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] eqArray;
+  @SuppressWarnings("unchecked")
+  private void initeqArray() {
+    eqArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift60,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift60,branch0,branch0,shift60,branch0,reduceexpr_funcall,shift60,branch0,reduceexpr_array,shift60,shift60,reduceexpr_if_unbalanced,shift60,reduceexpr_if,shift60,shift60,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] subArray;
+  @SuppressWarnings("unchecked")
+  private void initsubArray() {
+    subArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift40,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,shift40,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,shift40,branch0,shift40,branch0,shift40,branch0,shift40,branch0,shift40,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift40,branch0,branch0,shift40,branch0,reduceexpr_funcall,shift40,branch0,reduceexpr_array,shift40,shift40,reduceexpr_if_unbalanced,shift40,reduceexpr_if,shift40,shift40,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] neArray;
+  @SuppressWarnings("unchecked")
+  private void initneArray() {
+    neArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift44,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift44,branch0,branch0,shift44,branch0,reduceexpr_funcall,shift44,branch0,reduceexpr_array,shift44,shift44,reduceexpr_if_unbalanced,shift44,reduceexpr_if,shift44,shift44,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] _returnArray;
+  @SuppressWarnings("unchecked")
+  private void init_returnArray() {
+    _returnArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift22,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift22,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,reduceblock_empty,shift22,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,reduceblock_empty,shift22,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,reduceblock_empty,shift22,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,branch0,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,branch0,branch0,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift22,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] remArray;
+  @SuppressWarnings("unchecked")
+  private void initremArray() {
+    remArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift48,branch0,shift48,branch0,reduceexpr_div,branch0,shift48,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,shift48,branch0,shift48,branch0,shift48,branch0,shift48,branch0,shift48,branch0,shift48,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift48,branch0,branch0,shift48,branch0,reduceexpr_funcall,shift48,branch0,reduceexpr_array,shift48,shift48,reduceexpr_if_unbalanced,shift48,reduceexpr_if,shift48,shift48,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] ltArray;
+  @SuppressWarnings("unchecked")
+  private void initltArray() {
+    ltArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift54,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift54,branch0,branch0,shift54,branch0,reduceexpr_funcall,shift54,branch0,reduceexpr_array,shift54,shift54,reduceexpr_if_unbalanced,shift54,reduceexpr_if,shift54,shift54,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] gtArray;
+  @SuppressWarnings("unchecked")
+  private void initgtArray() {
+    gtArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift52,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift52,branch0,branch0,shift52,branch0,reduceexpr_funcall,shift52,branch0,reduceexpr_array,shift52,shift52,reduceexpr_if_unbalanced,shift52,reduceexpr_if,shift52,shift52,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] leArray;
+  @SuppressWarnings("unchecked")
+  private void initleArray() {
+    leArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift56,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift56,branch0,branch0,shift56,branch0,reduceexpr_funcall,shift56,branch0,reduceexpr_array,shift56,shift56,reduceexpr_if_unbalanced,shift56,reduceexpr_if,shift56,shift56,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] semicolonArray;
+  @SuppressWarnings("unchecked")
+  private void initsemicolonArray() {
+    semicolonArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift74,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,branch0,branch0,branch0,shift74,branch0,reduceexpr_funcall,shift74,branch0,reduceexpr_array,branch0,branch0,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,branch0,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] _whileArray;
+  @SuppressWarnings("unchecked")
+  private void init_whileArray() {
+    _whileArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift2,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift2,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,reduceblock_empty,shift2,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,reduceblock_empty,shift2,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,reduceblock_empty,shift2,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,branch0,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,branch0,branch0,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift2,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] textArray;
+  @SuppressWarnings("unchecked")
+  private void inittextArray() {
+    textArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift4,branch0,shift4,reducename_text,branch0,branch0,branch0,branch0,shift4,branch0,shift4,reduceargs_empty,shift4,reduceargs_empty,shift4,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift4,reduceexpr_parens,shift4,reduceexpr_name,reduceargs_empty,shift4,branch0,branch0,reduceblock_empty,shift4,reduceexpr_funcall_lambda,reducename_id,shift4,branch0,branch0,reduceblock_empty,shift4,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift4,reduceexpr_sub,shift4,reduceexpr_div,shift4,reduceexpr_ne,shift4,reduceexpr_mul,shift4,reduceexpr_rem,shift4,reduceexpr_add,shift4,reduceexpr_gt,shift4,reduceexpr_lt,shift4,reduceexpr_le,shift4,reduceexpr_ge,shift4,reduceexpr_eq,shift4,reduceexpr_access,reduceargs_empty,shift4,branch0,branch0,reduceblock_empty,shift4,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift4,shift4,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift4,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] antislashArray;
+  @SuppressWarnings("unchecked")
+  private void initantislashArray() {
+    antislashArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift5,branch0,shift5,reducename_text,branch0,branch0,branch0,branch0,shift5,branch0,shift5,reduceargs_empty,shift5,reduceargs_empty,shift5,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift5,reduceexpr_parens,shift5,reduceexpr_name,reduceargs_empty,shift26,branch0,branch0,reduceblock_empty,shift5,reduceexpr_funcall_lambda,reducename_id,shift33,branch0,branch0,reduceblock_empty,shift5,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift5,reduceexpr_sub,shift5,reduceexpr_div,shift5,reduceexpr_ne,shift5,reduceexpr_mul,shift5,reduceexpr_rem,shift5,reduceexpr_add,shift5,reduceexpr_gt,shift5,reduceexpr_lt,shift5,reduceexpr_le,shift5,reduceexpr_ge,shift5,reduceexpr_eq,branch0,reduceexpr_access,reduceargs_empty,shift66,branch0,branch0,reduceblock_empty,shift5,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift5,shift5,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift5,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] loptArray;
+  @SuppressWarnings("unchecked")
+  private void initloptArray() {
+    loptArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift12,branch0,shift12,reducename_text,branch0,branch0,branch0,branch0,shift12,branch0,shift12,reduceargs_empty,shift12,reduceargs_empty,shift12,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift12,reduceexpr_parens,shift12,reduceexpr_name,reduceargs_empty,shift12,branch0,branch0,reduceblock_empty,shift12,reduceexpr_funcall_lambda,reducename_id,shift12,branch0,branch0,reduceblock_empty,shift12,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift12,reduceexpr_sub,shift12,reduceexpr_div,shift12,reduceexpr_ne,shift12,reduceexpr_mul,shift12,reduceexpr_rem,shift12,reduceexpr_add,shift12,reduceexpr_gt,shift12,reduceexpr_lt,shift12,reduceexpr_le,shift12,reduceexpr_ge,shift12,reduceexpr_eq,branch0,reduceexpr_access,reduceargs_empty,shift12,branch0,branch0,reduceblock_empty,shift12,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift12,shift12,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift12,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] lcurlArray;
+  @SuppressWarnings("unchecked")
+  private void initlcurlArray() {
+    lcurlArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift14,branch0,shift14,reducename_text,branch0,branch0,branch0,branch0,shift14,branch0,shift14,reduceargs_empty,shift14,reduceargs_empty,shift14,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift14,reduceexpr_parens,shift14,reduceexpr_name,reduceargs_empty,shift14,branch0,branch0,reduceblock_empty,shift14,reduceexpr_funcall_lambda,reducename_id,shift14,branch0,branch0,reduceblock_empty,shift14,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift14,reduceexpr_sub,shift14,reduceexpr_div,shift14,reduceexpr_ne,shift14,reduceexpr_mul,shift14,reduceexpr_rem,shift14,reduceexpr_add,shift14,reduceexpr_gt,shift14,reduceexpr_lt,shift14,reduceexpr_le,shift14,reduceexpr_ge,shift14,reduceexpr_eq,branch0,reduceexpr_access,reduceargs_empty,shift14,branch0,branch0,reduceblock_empty,shift14,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift14,shift14,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift14,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] rcurlArray;
+  @SuppressWarnings("unchecked")
+  private void initrcurlArray() {
+    rcurlArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceargs_empty,shift16,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_sub,branch0,reduceexpr_div,branch0,reduceexpr_ne,branch0,reduceexpr_mul,branch0,reduceexpr_rem,branch0,reduceexpr_add,branch0,reduceexpr_gt,branch0,reduceexpr_lt,branch0,reduceexpr_le,branch0,reduceexpr_ge,branch0,reduceexpr_eq,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,branch0,branch0,branch0,branch0,reduceexpr_funcall,branch0,branch0,reduceexpr_array,branch0,branch0,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,branch0,branch0,branch0,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] integerArray;
+  @SuppressWarnings("unchecked")
+  private void initintegerArray() {
+    integerArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,shift18,branch0,shift18,reducename_text,branch0,branch0,branch0,branch0,shift18,branch0,shift18,reduceargs_empty,shift18,reduceargs_empty,shift18,reduceexpr_dict,reducename_id,reduceexpr_numeric,reduceblock_empty,shift18,reduceexpr_parens,shift18,reduceexpr_name,reduceargs_empty,shift18,branch0,branch0,reduceblock_empty,shift18,reduceexpr_funcall_lambda,reducename_id,shift18,branch0,branch0,reduceblock_empty,shift18,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,shift18,reduceexpr_sub,shift18,reduceexpr_div,shift18,reduceexpr_ne,shift18,reduceexpr_mul,shift18,reduceexpr_rem,shift18,reduceexpr_add,shift18,reduceexpr_gt,shift18,reduceexpr_lt,shift18,reduceexpr_le,shift18,reduceexpr_ge,shift18,reduceexpr_eq,branch0,reduceexpr_access,reduceargs_empty,shift18,branch0,branch0,reduceblock_empty,shift18,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,reduceargs_rec,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,shift18,shift18,reduceexpr_if_unbalanced,branch0,reduceexpr_if,reduceexpr_lambda_expr,reduceblock_empty,shift18,reduceinstr_while,branch0,branch0};
+  }
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] dotArray;
+  @SuppressWarnings("unchecked")
+  private void initdotArray() {
+    dotArray=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{branch0,branch0,branch0,branch0,reducename_text,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_dict,reducename_id,reduceexpr_numeric,branch0,branch0,reduceexpr_parens,branch0,reduceexpr_name,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_funcall_lambda,reducename_id,branch0,branch0,branch0,branch0,branch0,branch0,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,shift62,branch0,reduceexpr_access,branch0,branch0,branch0,branch0,branch0,branch0,reduceexpr_mthcall_lambda,branch0,reduceexpr_mthcall,shift62,branch0,branch0,shift62,branch0,reduceexpr_funcall,shift62,branch0,reduceexpr_array,shift62,shift62,reduceexpr_if_unbalanced,shift62,reduceexpr_if,shift62,shift62,branch0,branch0,branch0,branch0};
+  }
+
+  private Action<TerminalEnum,ProductionEnum,VersionEnum>[] branchArrayTable;
+  @SuppressWarnings("unchecked")
+  private void initBranchArrayTable() {
+    branchArrayTable=(Action<TerminalEnum,ProductionEnum,VersionEnum>[])new Action<?,?,?>[]{reduceblock_empty,reducescript,error0,error0,reducename_text,error0,error0,error0,error0,error0,error0,error0,error0,error0,error0,error0,reduceexpr_dict,reducename_id,reduceexpr_numeric,error0,error0,reduceexpr_parens,error0,reduceexpr_name,error0,error0,error0,error0,error0,error0,reduceexpr_funcall_lambda,reducename_id,error0,error0,error0,error0,error0,reduceinstr_assign_lambda,reduceblock_rec,reduceeoi_empty,error0,reduceexpr_sub,error0,reduceexpr_div,error0,reduceexpr_ne,error0,reduceexpr_mul,error0,reduceexpr_rem,error0,reduceexpr_add,error0,reduceexpr_gt,error0,reduceexpr_lt,error0,reduceexpr_le,error0,reduceexpr_ge,error0,reduceexpr_eq,error0,reduceexpr_access,error0,error0,error0,error0,error0,error0,reduceexpr_mthcall_lambda,error0,reduceexpr_mthcall,error0,reduceeoi_semi,reduceinstr_expr,reduceeoi_empty,reduceinstr_assign,reduceexpr_funcall,reduceeoi_empty,reduceinstr_return,reduceexpr_array,error0,error0,reduceexpr_if_unbalanced,error0,reduceexpr_if,reduceexpr_lambda_expr,error0,error0,reduceinstr_while,exit,exit};
+  }
+
+  private final ParserTable<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> table;
+  
+  public static final ParserTable<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> createTable() {
+    return new ParserDataTable().table;
+  }
+
+  private final AcceptAction<TerminalEnum,ProductionEnum,VersionEnum> accept;
+  private final ExitAction<TerminalEnum,ProductionEnum,VersionEnum> exit;
+
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_if;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_name;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_div;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceargs_empty;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_array;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceinstr_expr;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_funcall;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_lambda_expr;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceinstr_while;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_gt;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_ne;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_le;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceparams_empty;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_numeric;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceeoi_semi;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_eq;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_access;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_lt;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_funcall_lambda;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceargs_rec;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_if_unbalanced;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_parens;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_mthcall_lambda;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reducescript;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceinstr_return;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_mul;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceparams_rec;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reducename_text;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceparam_id;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_sub;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_rem;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceblock_empty;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_dict;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_add;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceblock_rec;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceinstr_assign;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reducename_id;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceinstr_assign_lambda;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceeoi_empty;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_ge;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceparam_id_varargs;
+  private final ReduceAction<TerminalEnum,ProductionEnum,VersionEnum> reduceexpr_mthcall;
+
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift86;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift31;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift16;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift44;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift22;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift42;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift64;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift50;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift60;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift78;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift17;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift37;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift35;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift46;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift28;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift5;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift8;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift62;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift72;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift90;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift9;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift70;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift7;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift18;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift30;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift14;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift4;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift33;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift2;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift12;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift11;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift26;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift3;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift52;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift84;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift68;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift81;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift56;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift10;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift54;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift19;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift48;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift32;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift40;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift21;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift74;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift24;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift66;
+  private final ShiftAction<TerminalEnum,ProductionEnum,VersionEnum> shift58;
+
+
+  private final ErrorAction<TerminalEnum,ProductionEnum,VersionEnum> error0;
+
+  private final BranchAction<TerminalEnum,ProductionEnum,VersionEnum> branch0;
+
+
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0add_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0_return_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0param_metadata0reduceparams_rec;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0lopt_metadata0reduceargs_empty;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0semicolon_metadata0reduceeoi_semi;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0lcurl_metadata0reduceargs_empty;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0assign_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rem_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0arrow_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0integer_metadata0reduceexpr_numeric;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceexpr_mthcall_lambda;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0block_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0params_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0eq_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0name_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0gt_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0sub_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0expr_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0id_metadata0reducename_id;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceexpr_mthcall;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0antislash_metadata0reduceparams_empty;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0ropt_metadata0reduceexpr_array;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0le_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceexpr_parens;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0lt_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceinstr_while;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rcurl_metadata0reduceexpr_dict;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceexpr_if_unbalanced;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0__eof___metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0eol_metadata0reduceblock_empty;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0ge_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0mul_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0eoi_metadata0reduceinstr_return;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0lpar_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0instr_metadata0reduceblock_rec;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0script_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0ne_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0text_metadata0reducename_text;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0args_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0lpar_metadata0reduceblock_empty;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0lpar_metadata0reduceargs_empty;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceexpr_funcall_lambda;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceexpr_if;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0eoi_metadata0reduceinstr_expr;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0id_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceexpr_funcall;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0_if_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0rpar_metadata0reduceinstr_assign_lambda;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0dot_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0eoi_metadata0reduceinstr_assign;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0div_metadata0null;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0mul_metadata0reduceparam_id_varargs;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0null_metadata0reduceblock_empty;
+  private StateMetadata<TerminalEnum,NonTerminalEnum,ProductionEnum,VersionEnum> metadata0_while_metadata0null;
+}

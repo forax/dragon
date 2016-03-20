@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="grammar/gen-src">
-		<attributes>
-			<attribute name="ignore_optional_problems" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="lib/tatoo-runtime.jar"/>
+	<classpathentry kind="src" path="src/fr.umlv.dragon.rt"/>
+	<classpathentry kind="src" path="src/fr.umlv.dragon.main"/>
+	<classpathentry kind="src" path="src/fr.umlv.dragon.ast"/>
+	<classpathentry kind="src" path="grammar/gen-src/fr.umlv.dragon.grammar"/>
+	<classpathentry kind="src" path="lib2module/fr.umlv.tatoo.runtime"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9.0"/>
+	<classpathentry kind="lib" path="mlib/fr.umlv.tatoo.runtime-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
