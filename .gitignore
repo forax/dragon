@@ -12,3 +12,4 @@ dragon.jar
 # output directory
 /bin/
 /classes/
+/build/
