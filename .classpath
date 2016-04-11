@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="src/fr.umlv.dragon.ast"/>
 	<classpathentry kind="src" path="grammar/gen-src/fr.umlv.dragon.grammar"/>
 	<classpathentry kind="src" path="lib2module/fr.umlv.tatoo.runtime"/>
+	<classpathentry kind="src" path="jlink-plugin/src/fr.umlv.dragon.jlinkplugin"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9.0"/>
 	<classpathentry kind="lib" path="mlib/fr.umlv.tatoo.runtime-1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>

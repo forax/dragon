@@ -1,10 +1,11 @@
 #!/bin/bash
-export JAVA_HOME=/usr/jdk/jdk-9-jigsaw
+export JAVA_HOME=/usr/jdk/jdk-9
 export javac=$JAVA_HOME/bin/javac
 export jar=$JAVA_HOME/bin/jar
 export jlink=$JAVA_HOME/bin/jlink
 
 # modulify tatoo-runtime.jar to fr.umlv.tatoo.runtime
+echo "modulify tatoo-runtime.jar"
 $javac -d build/modules \
        -modulesourcepath lib2module \
        $(find lib2module/ -name "*.java")
@@ -15,6 +16,7 @@ $jar --update \
      -C build/modules/fr.umlv.tatoo.runtime module-info.class
 
 # build fr.umlv.dragon.rt
+echo "build fr.umlv.dragon.rt"
 $javac -d build/modules \
        -modulesourcepath src \
        $(find src/fr.umlv.dragon.rt -name "*.java")
@@ -24,6 +26,7 @@ $jar --create \
      -C build/modules/fr.umlv.dragon.rt .
 
 # build fr.umlv.dragon.grammar
+echo "build fr.umlv.dragon.grammar"
 $javac -d build/modules \
        -modulesourcepath grammar/gen-src \
        -modulepath mlib \
@@ -55,6 +58,7 @@ $jar --create \
 #     -C build/modules/fr.umlv.dragon.main .
 
 # build fr.umlv.dragon.ast & fr.umlv.dragon.main
+echo "build fr.umlv.dragon.ast and fr.umlv.dragon.main"
 $javac -d build/modules \
        -modulesourcepath src \
        -modulepath mlib \
@@ -69,11 +73,34 @@ $jar --create \
      --main-class fr.umlv.dragon.main.Main \
      -C build/modules/fr.umlv.dragon.main .
 
-# build an image
+# build fr.umlv.dragon.jlinkplugin
+echo "build fr.umlv.dragon.jlinkplugin"
+$javac -d build/modules \
+       -modulesourcepath jlink-plugin/src \
+       -modulepath mlib \
+       $(find jlink-plugin/src -name "*.java")
+$jar --create \
+     --file mlib/fr.umlv.dragon.jlinkplugin-1.0.jar \
+     --module-version=1.0 \
+     -C build/modules/fr.umlv.dragon.jlinkplugin .
+
+# create a image
+#       --plugin-module-path mlib \
+#       --genclasslist \
+#       --vm=server \
+echo "create image"
 rm -fr image
-$jlink --modulepath  $JAVA_HOME/jmods:mlib \
+$jlink --modulepath $JAVA_HOME/jmods:mlib \
+       --plugin-module-path mlib \
+       --genclasslist=image/lib/classlist2 \
        --addmods fr.umlv.dragon.main \
        --compress=2 \
        --strip-debug \
        --output image
+
+# create CDS mapped file
+echo "create CDS mapped file"
+image/bin/java -Xshare:dump \
+               -XX:SharedClassListFile=image/lib/classlist2 \
+               -XX:SharedReadWriteSize=20m
 
