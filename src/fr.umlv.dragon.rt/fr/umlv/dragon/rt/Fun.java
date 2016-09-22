@@ -22,15 +22,6 @@ public class Fun implements Expr {
     this(params, EMPTY_BLOCK, nativeCall);
   }
   
-  /*
-  public Fun(Array<Parameter> params, Block body) {
-    Utils.requireNonNull(params, "params");
-    Utils.requireNonNull(body, "body");
-    this.params = params;
-    this.body = body;
-    this.nativeCall = (globals, receiver, args) -> Interpreter.interpret(this, globals, receiver, args);
-  }*/
-  
   public Array<Parameter> params() {
     return params;
   }

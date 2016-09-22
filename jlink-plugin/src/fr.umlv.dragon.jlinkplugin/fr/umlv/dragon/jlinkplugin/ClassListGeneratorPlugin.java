@@ -8,25 +8,24 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import jdk.tools.jlink.plugin.PluginException;
-import jdk.tools.jlink.plugin.Pool;
-import jdk.tools.jlink.plugin.Pool.ModuleDataType;
-import jdk.tools.jlink.plugin.TransformerPlugin;
+import jdk.tools.jlink.plugin.ResourcePool;
+import jdk.tools.jlink.plugin.ResourcePoolBuilder;
+import jdk.tools.jlink.plugin.ResourcePoolEntry;
+import jdk.tools.jlink.plugin.ResourcePoolEntry.Type;
+import jdk.tools.jlink.plugin.Plugin;
 
-public class ClassListGeneratorPlugin implements TransformerPlugin {
+public class ClassListGeneratorPlugin implements Plugin {
     private Path outputPath;
     
     public ClassListGeneratorPlugin() {
     }
-
-    @Override
-    public Set<PluginType> getType() {
-        return Set.of(CATEGORY.TRANSFORMER);
-    }
-
+    
     @Override
     public String getName() {
         return "genclasslist";
@@ -35,11 +34,6 @@ public class ClassListGeneratorPlugin implements TransformerPlugin {
     @Override
     public String getDescription() {
         return "generate Class Data Sharing classfile";
-    }
-
-    @Override
-    public Set<STATE> getState() {
-        return EnumSet.of(STATE.FUNCTIONAL);
     }
 
     @Override
@@ -58,27 +52,27 @@ public class ClassListGeneratorPlugin implements TransformerPlugin {
         outputPath = Paths.get(argument);
     }
 
+    private static String className(String path) {
+      int firstSlash = path.indexOf('/', 1); // skip root '/'
+      String className = path.substring(firstSlash + 1, path.length() - ".class".length()); 
+      return className;
+    }
+    
     @Override
-    public void visit(Pool in, Pool out) {
+    public ResourcePool transform(ResourcePool in, ResourcePoolBuilder builder) {
         if (outputPath == null) {
           throw new PluginException("no output path set !");
         }
       
-        ArrayList<String> classList = new ArrayList<>();
-        for (Pool.ModuleData data : in.getContent()) {
-          out.add(data);
-           
-          String path = data.getPath();
-          if (data.getType() == ModuleDataType.CLASS_OR_RESOURCE && path.endsWith(".class")) {
-            int firstSlash = path.indexOf('/', 1); // skip root '/'
-            String className = path.substring(firstSlash + 1, path.length() - ".class".length()); 
-            if (className.equals("module-info")) {
-              continue;
-            }
-            classList.add(className);
-          }
-        }
-        classList.sort(null);
+        List<String> classList =
+          in.entries()
+            .filter(entry -> entry.type() == Type.CLASS_OR_RESOURCE)
+            .map(ResourcePoolEntry::path)
+            .filter(path -> path.endsWith(".class"))
+            .map(path -> className(path))
+            .filter(name -> !name.equals("module-info"))
+            .sorted()
+            .collect(Collectors.toList());
         
         Path outputPath = this.outputPath;
         System.out.println("generate classfile " + outputPath);
@@ -88,5 +82,7 @@ public class ClassListGeneratorPlugin implements TransformerPlugin {
         } catch(IOException e) {
           throw new UncheckedIOException(e);
         }
+        
+        return in;
     }
 }

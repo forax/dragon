@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.ServiceLoader;
 import java.util.stream.Collectors;
 
 import fr.umlv.dragon.ast.ASTBuilder;
@@ -75,9 +76,10 @@ public class Main {
           ">=", new Fun(Parameter.of("a", "b"), NativeCall.function((a, b) -> ((Comparable<Object>)a).compareTo(b) >= 0))
           );
       
+      Interpreter interpreter =  ServiceLoader.load(Interpreter.class).iterator().next();
       Block script = ASTBuilder.buildAST(reader);
       Array<Parameter> params = Array.of(new Parameter("ARGS", false));
-      Interpreter.interpret(params, script, globals, new Object(), new Object[] { Array.of(arguments) });
+      interpreter.interpret(params, script, globals, new Object(), new Object[] { Array.of(arguments) });
     }
   }
 }

@@ -1,6 +1,5 @@
 package fr.umlv.dragon.ast;
 
-import static fr.umlv.dragon.ast.Interpreter.createFun;
 import static fr.umlv.dragon.rt.Literal.Kind.COMMENT;
 import static fr.umlv.dragon.rt.Literal.Kind.ID;
 import static fr.umlv.dragon.rt.Literal.Kind.INTEGER;
@@ -8,6 +7,7 @@ import static fr.umlv.dragon.rt.Literal.Kind.STRING;
 import static fr.umlv.dragon.rt.Literal.Kind.SYMBOL;
 
 import java.util.Optional;
+import java.util.ServiceLoader;
 
 import fr.umlv.dragon.grammar.tools.GrammarEvaluator;
 import fr.umlv.dragon.grammar.tools.TerminalEvaluator;
@@ -15,6 +15,7 @@ import fr.umlv.dragon.rt.Array;
 import fr.umlv.dragon.rt.Block;
 import fr.umlv.dragon.rt.Call;
 import fr.umlv.dragon.rt.Expr;
+import fr.umlv.dragon.rt.Fun;
 import fr.umlv.dragon.rt.If;
 import fr.umlv.dragon.rt.Literal;
 import fr.umlv.dragon.rt.Load;
@@ -46,6 +47,11 @@ class ASTEvaluator implements GrammarEvaluator {
       }
       return new Literal(SYMBOL, text.substring(0, text.length() - 1));
     }
+  }
+
+  private static Fun createFun(Array<Parameter> params, Block body) {
+    Interpreter interpreter =  ServiceLoader.load(Interpreter.class).iterator().next();
+    return new Fun(params, body, (globals, receiver, args) -> interpreter.interpret(params, body, globals, receiver, args));
   }
   
   @Override

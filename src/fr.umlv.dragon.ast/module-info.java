@@ -3,4 +3,6 @@ module fr.umlv.dragon.ast {
   requires fr.umlv.dragon.grammar;
   
   exports fr.umlv.dragon.ast;
+  
+  uses fr.umlv.dragon.ast.Interpreter;
 }
